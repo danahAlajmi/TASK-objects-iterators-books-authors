@@ -1,6 +1,7 @@
 const authors = require("./authors.json");
 const books = require("./books.json");
-
+//console.log( authors[0]);
+//console.log(books[0]);
 /**************************************************************
  * getBookById(bookId, books):
  * - receives a bookId
@@ -10,8 +11,13 @@ const books = require("./books.json");
  ****************************************************************/
 function getBookById(bookId, books) {
   // Your code goes here
+  const thisbook= books.find(book=> book.id===bookId);
+  if(thisbook===null)
+  return "undefined";
+  else return thisbook;
+
 }
-// console.log(getBookById(12, books));
+ console.log(getBookById(12, books));
 
 /**************************************************************
  * getAuthorByName(authorName, authors):
@@ -22,8 +28,12 @@ function getBookById(bookId, books) {
  ****************************************************************/
 function getAuthorByName(authorName, authors) {
   // Your code goes here
+  const thisAuthor= authors.find( author=> author.name.toLowerCase()===authorName.toLowerCase());
+  if(thisAuthor===null)
+  return "undefined";
+  else return thisAuthor;
 }
-// console.log(getAuthorByName("J.K. Rowling", authors));
+console.log(getAuthorByName("J.K. Rowling", authors));
 
 /**************************************************************
  * bookCountsByAuthor(authors):
@@ -33,8 +43,9 @@ function getAuthorByName(authorName, authors) {
  ****************************************************************/
 function bookCountsByAuthor(authors) {
   // Your code goes here
+  return authors.map(element => ({author :element.name, bookCount: element.books.length}));
 }
-// console.log(bookCountsByAuthor(authors));
+console.log(bookCountsByAuthor(authors));
 
 /**************************************************************
  * booksByColor(books):
@@ -45,6 +56,10 @@ function bookCountsByAuthor(authors) {
  ****************************************************************/
 function booksByColor(books) {
   const colors = {};
+  colors.color=books.color;
+  
+
+
 
   // Your code goes here
 
