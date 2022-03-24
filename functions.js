@@ -124,8 +124,14 @@ console.log(mostProlificAuthor(authors));
  ****************************************************************/
 function relatedBooks(bookId, authors, books) {
   // Your code goes here
+  let bookInfo= books.find((book)=> book.id === bookId);
+  let bookName=bookInfo.authors.map( (author)=> author.name);
+  let booksList=bookName.map((author)=>titlesByAuthorName(author, authors,books));
+  let stringOfBooks=booksList.join();
+  let arrayOftitle=stringOfBooks.split(",");
+  return arrayOftitle;
 }
-// console.log(relatedBooks(50, authors, books));
+ console.log(relatedBooks(50, authors, books));
 
 /**************************************************************
  * friendliestAuthor(authors):
